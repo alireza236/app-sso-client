@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  app-sso-three:
+    image: docker.io/bitnami/codeigniter:3
+    container_name: app-sso-three
+    restart: unless-stopped
+    tty: true
+    ports:
+      - '9797:8000'
+    volumes:
+      - '.:/app'
+    working_dir: /app 
+    depends_on:
+      - mariadb
+    networks: 
+      - network-sso  
+  composer:
+    build:
+      context: .
+      dockerfile: composer.dockerfile
+    container_name: composer
+    volumes:
+        - .:/app
+    working_dir: /app 
+    depends_on:
+        - mariadb
+    user: alireza
+    networks:
+      - network-sso    
+  mariadb:
+    image: docker.io/bitnami/mariadb:10.3
+    container_name: app-sso-three-client-mariadb
+    restart: unless-stopped
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    networks: 
+      - network-sso  
+
+networks: 
+  network-sso:
+    external: true
