@@ -52,6 +52,16 @@ class Callback extends CI_Controller {
                    Note : sebelum menyimpan data user ke auth session lakukan proses kueri data dgn menggunakan NIP untuk memastikan ada kesesuaian data antara SSO server dgn aplikasi klien
                           apabila data tidak sesuai maka lakukan redirect ke http://sso.bekasikota.go.id/authsso/failed, dan apabila  data berdasarkan NIP sesuai antara SSO server 
                           dgn aplikasi klien maka simpan  ke dalam session sebagai autentikasi..
+                          
+                          $nip = $response['nip]
+                          query NIP in database... 
+
+                          if (isset($nip)) {
+                                  redirect('/home');
+                            } else {
+                                //abort(403, 'Unauthorized.');
+                                redirect('http://sso.bekasikota.go.id/authsso/failed');
+                            }
                 */
 
 
