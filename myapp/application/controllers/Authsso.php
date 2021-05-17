@@ -8,8 +8,8 @@ class Authsso extends CI_Controller {
         $provider = new \League\OAuth2\Client\Provider\GenericProvider([
             'clientId'                => '',    //  client ID 
             'clientSecret'            => '',    //  client secret  
-            'redirectUri'             => '', // ini adalah URI callback untuk men-generate token setelah proses autorisasi berhasil. 
-                                            //nama URI ini adalah nama URI aplikasi klien contoh   https://sikerja.bekasikota.go.id/callback
+            'redirectUri'             => '',    // ini adalah URI callback untuk men-generate token setelah proses autorisasi berhasil. 
+                                               //nama URI ini adalah nama URI aplikasi klien contoh   https://sikerja.bekasikota.go.id/callback
             
             'urlAuthorize'            => 'https://sso.bekasikota.go.id/oauth/authorize', // URI untuk authorize
             'urlAccessToken'          => 'https://sso.bekasikota.go.id/oauth/token',    // URI untuk mendaptakan token dari SSO server 
